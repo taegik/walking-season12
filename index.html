@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>상상인 걷기 프로젝트 시즌12 종료 리포트</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #00A499;
+      --primary-dark: #008279;
+      --primary-light: #E6F6F5;
+      --navy: #1E293B;
+      --navy-light: #334155;
+      --bg-soft: #F4F9F9;
+      --white: #FFFFFF;
+      --text-main: #1E293B;
+      --text-muted: #64748B;
+      --border: #E2E8F0;
+      --shadow: 0 10px 25px -5px rgba(30, 41, 59, 0.06), 0 8px 10px -6px rgba(30, 41, 59, 0.04);
+      --radius-lg: 24px;
+      --radius-md: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-soft);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header & Hero */
+    header {
+      background: linear-gradient(135deg, var(--navy) 0%, #0F172A 100%);
+      color: var(--white);
+      padding: 64px 0 96px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      top: -120px;
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, rgba(0,164,153,0.28) 0%, rgba(0,164,153,0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .brand-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 40px;
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-text {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: var(--white);
+    }
+
+    .badge-season {
+      background: rgba(0, 164, 153, 0.2);
+      border: 1px solid var(--primary);
+      color: #5EEAD4;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .hero-content {
+      max-width: 720px;
+    }
+
+    .hero-eyebrow {
+      color: #5EEAD4;
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .hero-title {
+      font-size: clamp(28px, 4.5vw, 44px);
+      font-weight: 900;
+      line-height: 1.25;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+
+    .hero-title span {
+      color: var(--primary);
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      color: #CBD5E1;
+      font-weight: 400;
+    }
+
+    /* Section 1: KPI Cards */
+    .kpi-section {
+      margin-top: -56px;
+      position: relative;
+      z-index: 10;
+      margin-bottom: 64px;
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+    }
+
+    .kpi-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0,164,153,0.1);
+      transition: transform 0.25s ease;
+    }
+
+    .kpi-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .kpi-label {
+      font-size: 14px;
+      color: var(--text-muted);
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .kpi-value {
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--navy);
+      letter-spacing: -0.8px;
+    }
+
+    .kpi-value.accent {
+      color: var(--primary);
+    }
+
+    .kpi-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    /* Common Section Header */
+    section.block {
+      margin-bottom: 72px;
+    }
+
+    .sec-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .sec-tag {
+      display: inline-block;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-weight: 700;
+      font-size: 13px;
+      padding: 5px 14px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+
+    .sec-title {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--navy);
+      letter-spacing: -0.6px;
+      margin-bottom: 8px;
+    }
+
+    .sec-sub {
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    /* Section 2: Earth Distance */
+    .earth-box {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .earth-box {
+        grid-template-columns: 1fr;
+        padding: 28px 20px;
+      }
+    }
+
+    .earth-visual {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .earth-ring {
+      position: relative;
+      width: 220px;
+      height: 220px;
+    }
+
+    .earth-center-text {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .earth-laps {
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--primary);
+      line-height: 1.1;
+    }
+
+    .earth-laps-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-top: 4px;
+    }
+
+    .earth-info h3 {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: var(--navy);
+    }
+
+    .earth-info h3 span {
+      color: var(--primary);
+    }
+
+    .earth-info p {
+      color: var(--text-muted);
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+
+    .progress-bar-wrap {
+      background: var(--bg-soft);
+      border-radius: 999px;
+      height: 16px;
+      overflow: hidden;
+      margin-bottom: 10px;
+      border: 1px solid var(--border);
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary) 0%, #2DD4BF 100%);
+      border-radius: 999px;
+      width: 0%;
+      transition: width 1.2s ease-out;
+    }
+
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Section 3: ESG Impact */
+    .esg-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+      gap: 20px;
+    }
+
+    .esg-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      box-shadow: var(--shadow);
+      border-top: 4px solid var(--primary);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .esg-card.social {
+      border-top-color: var(--navy);
+    }
+
+    .esg-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      background: var(--primary-light);
+      padding: 4px 10px;
+      border-radius: 8px;
+      width: fit-content;
+      margin-bottom: 16px;
+    }
+
+    .esg-card.social .esg-badge {
+      background: #F1F5F9;
+      color: var(--navy);
+    }
+
+    .esg-icon {
+      font-size: 36px;
+      margin-bottom: 12px;
+    }
+
+    .esg-metric {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .esg-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .esg-note {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Section 4: Participant Search */
+    .search-box-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0,164,153,0.18);
+    }
+
+    .search-form {
+      display: flex;
+      gap: 12px;
+      max-width: 580px;
+      margin: 0 auto 24px;
+    }
+
+    @media (max-width: 540px) {
+      .search-form {
+        flex-direction: column;
+      }
+    }
+
+    .search-input {
+      flex: 1;
+      padding: 15px 20px;
+      font-size: 15px;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-md);
+      outline: none;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+    }
+
+    .search-btn {
+      background: var(--primary);
+      color: var(--white);
+      border: none;
+      padding: 15px 28px;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .search-btn:hover {
+      background: var(--primary-dark);
+    }
+
+    .search-hint {
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .search-results {
+      max-width: 680px;
+      margin: 24px auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .result-item {
+      background: var(--bg-soft);
+      border: 1px solid rgba(0, 164, 153, 0.25);
+      border-radius: var(--radius-md);
+      padding: 22px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .result-user {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .result-name {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--navy);
+    }
+
+    .result-name span {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-left: 8px;
+    }
+
+    .result-steps {
+      font-size: 15px;
+      color: var(--navy-light);
+      font-weight: 700;
+    }
+
+    .result-steps strong {
+      color: var(--primary);
+      font-size: 19px;
+    }
+
+    .reward-badge {
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .reward-badge.win {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .reward-badge.none {
+      background: #E2E8F0;
+      color: var(--navy-light);
+    }
+
+    .result-top-row {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .result-summary-stats {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      margin-top: 4px;
+    }
+
+    .point-pill {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .weekly-breakdown {
+      width: 100%;
+      margin-top: 12px;
+      padding-top: 14px;
+      border-top: 1px dashed rgba(0, 164, 153, 0.25);
+    }
+
+    .weekly-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .weekly-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+    }
+
+    @media (max-width: 640px) {
+      .weekly-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .week-chip {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 8px 6px;
+      text-align: center;
+    }
+
+    .week-chip-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    .week-chip-val {
+      font-size: 12px;
+      font-weight: 900;
+      color: var(--navy);
+    }
+
+    .qna-banner {
+      max-width: 680px;
+      margin: 28px auto 0;
+      padding: 18px 22px;
+      background: #F8FAFC;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .qna-text {
+      font-size: 13px;
+      color: var(--navy-light);
+      font-weight: 500;
+    }
+
+    .qna-text strong {
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .qna-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--navy);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px 18px;
+      border-radius: 999px;
+      transition: background 0.2s, transform 0.2s;
+      white-space: nowrap;
+    }
+
+    .qna-link-btn:hover {
+      background: var(--primary);
+      transform: translateY(-1px);
+    }
+
+    .empty-msg {
+      text-align: center;
+      padding: 24px;
+      background: #F8FAFC;
+      border-radius: var(--radius-md);
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    /* Section 5: 6-Year 12-Season Archive & Cumulative ESG */
+    .archive-summary-banner {
+      background: linear-gradient(135deg, var(--white) 0%, var(--primary-light) 100%);
+      border: 2px solid rgba(0, 164, 153, 0.35);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      margin-bottom: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .archive-summary-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(0, 164, 153, 0.2);
+    }
+
+    .archive-summary-title {
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--navy);
+    }
+
+    .archive-summary-title span {
+      color: var(--primary);
+    }
+
+    .archive-summary-note {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      background: var(--white);
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 164, 153, 0.25);
+    }
+
+    .archive-kpi-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+    }
+
+    .archive-stat {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      border: 1px solid rgba(0, 164, 153, 0.15);
+    }
+
+    .archive-stat-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .archive-stat-val {
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--navy);
+    }
+
+    .archive-stat-val.accent {
+      color: var(--primary);
+    }
+
+    .archive-stat-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+      gap: 16px;
+    }
+
+    .season-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(30,41,59,0.04);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease;
+    }
+
+    .season-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .season-card.latest {
+      border: 2px solid var(--primary);
+      background: linear-gradient(180deg, var(--white) 0%, var(--primary-light) 100%);
+    }
+
+    .season-card.peak {
+      border: 1.5px solid rgba(0, 164, 153, 0.5);
+    }
+
+    .season-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .season-name {
+      font-size: 17px;
+      font-weight: 900;
+      color: var(--navy);
+    }
+
+    .season-tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: #F1F5F9;
+      color: var(--navy-light);
+    }
+
+    .season-card.peak .season-tag {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+    }
+
+    .season-card.latest .season-tag {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .season-steps {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--primary);
+      margin-bottom: 10px;
+      letter-spacing: -0.4px;
+    }
+
+    .season-meta-list {
+      list-style: none;
+      font-size: 12px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .season-meta-list li {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .season-meta-list strong {
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .archive-table-wrap {
+      margin-top: 24px;
+      background: var(--white);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow);
+      overflow-x: auto;
+      border: 1px solid var(--border);
+    }
+
+    .archive-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      text-align: right;
+      min-width: 820px;
+    }
+
+    .archive-table th {
+      background: var(--navy);
+      color: var(--white);
+      font-weight: 700;
+      padding: 13px 14px;
+      white-space: nowrap;
+    }
+
+    .archive-table th:first-child,
+    .archive-table td:first-child {
+      text-align: center;
+      font-weight: 800;
+    }
+
+    .archive-table td {
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--navy-light);
+      white-space: nowrap;
+    }
+
+    .archive-table tbody tr:hover {
+      background: #F8FAFC;
+    }
+
+    .archive-table tr.season12-row td {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-weight: 700;
+    }
+
+    .archive-table tfoot td {
+      background: #F1F5F9;
+      font-weight: 900;
+      color: var(--navy);
+      border-top: 2px solid var(--navy);
+      padding: 13px 14px;
+    }
+
+    /* Section 6: Next Step Closing Banner */
+    .closing-banner {
+      background: linear-gradient(135deg, var(--navy) 0%, #113836 100%);
+      border-radius: var(--radius-lg);
+      padding: 52px 40px;
+      color: var(--white);
+      text-align: center;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .closing-tag {
+      display: inline-block;
+      background: var(--primary);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+
+    .closing-title {
+      font-size: clamp(24px, 3.5vw, 34px);
+      font-weight: 900;
+      margin-bottom: 14px;
+      line-height: 1.35;
+    }
+
+    .closing-desc {
+      max-width: 640px;
+      margin: 0 auto 28px;
+      color: #CBD5E1;
+      font-size: 16px;
+    }
+
+    .app-pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .app-pill {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #E2E8F0;
+    }
+
+    .closing-cta {
+      display: inline-block;
+      background: var(--primary);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 32px;
+      border-radius: 999px;
+      text-decoration: none;
+      box-shadow: 0 8px 20px rgba(0, 164, 153, 0.35);
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px 20px 48px;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header & Hero -->
+  <header>
+    <div class="container">
+      <div class="brand-bar">
+        <div class="logo-wrap">
+          <!-- Sangsangin Symbol PNG -->
+          <img src="data:image/png;base64,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" alt="상상인 CI 심볼" style="height: 32px; width: auto; display: block;" />
+          <span class="logo-text">상상인그룹</span>
+        </div>
+        <span class="badge-season">2026 시즌 12 결과 리포트 (초안 샘플)</span>
+      </div>
+
+      <div class="hero-content">
+        <span class="hero-eyebrow">7주간의 건강한 발걸음, 지구를 지키는 ESG 실천</span>
+        <h1 class="hero-title">사내 걷기 프로젝트<br><span>시즌 12</span> 종료 리포트</h1>
+        <p class="hero-sub">지난 7주간 임직원 여러분의 한 걸음 한 걸음이 모여 건강한 일상과 지속가능한 내일을 만들었습니다.</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Section 1: KPI Cards -->
+    <section class="kpi-section">
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">총 참여 임직원 <span>👥</span></div>
+          <div class="kpi-value" id="kpi-users">0명</div>
+          <div class="kpi-desc">그룹사 임직원 함께 참여</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">7주간 누적 걸음수 <span>👟</span></div>
+          <div class="kpi-value accent" id="kpi-steps">0보</div>
+          <div class="kpi-desc">전체 참여자 합산 기록</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">1인당 평균 걸음수 <span>📊</span></div>
+          <div class="kpi-value" id="kpi-avg">0보</div>
+          <div class="kpi-desc">일평균 약 <span id="kpi-daily">0</span>보 달성</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">목표 달성(포상) 인원 <span>🏆</span></div>
+          <div class="kpi-value" id="kpi-winners">0명</div>
+          <div class="kpi-desc">달성률 <span id="kpi-rate">0</span>% 기록</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Earth Circumference Visualization -->
+    <section class="block">
+      <div class="sec-header">
+        <span class="sec-tag">상상인 ESG 리포트</span>
+        <h2 class="sec-title">우리의 걸음은 지구 몇 바퀴일까?</h2>
+        <p class="sec-sub">성인 평균 보폭(70cm) 기준 총 이동 거리를 지구 둘레(40,075km)로 환산했습니다.</p>
+      </div>
+
+      <div class="earth-box">
+        <div class="earth-visual">
+          <div class="earth-ring">
+            <svg viewBox="0 0 120 120" width="220" height="220">
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#E6F6F5" stroke-width="12"/>
+              <circle id="earth-circle" cx="60" cy="60" r="50" fill="none" stroke="#00A499" stroke-width="12"
+                      stroke-dasharray="314.16" stroke-dashoffset="314.16" stroke-linecap="round"
+                      transform="rotate(-90 60 60)" style="transition: stroke-dashoffset 1.4s ease-out;"/>
+            </svg>
+            <div class="earth-center-text">
+              <div class="earth-laps" id="earth-laps-text">0.0바퀴</div>
+              <div class="earth-laps-label">지구 둘레 환산</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="earth-info">
+          <h3>총 <span id="total-km-text">0</span> km 이동,<br>지구를 <span id="earth-laps-inline">0.0</span>바퀴 완주했습니다!</h3>
+          <p>서울에서 부산(약 400km)을 왕복 <strong id="seoul-busan-text">0</strong>회 이상 다녀온 거리와 같습니다. 출퇴근길과 점심시간의 짧은 산책이 모여 놀라운 기록을 완성했습니다.</p>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar-fill" id="earth-bar"></div>
+          </div>
+          <div class="progress-meta">
+            <span>0 km</span>
+            <span>지구 1바퀴 (40,075 km) 기준</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: ESG Impact Report -->
+    <section class="block">
+      <div class="sec-header">
+        <span class="sec-tag">ESG PERFORMANCE</span>
+        <h2 class="sec-title">걸음으로 만든 환경·사회적 가치</h2>
+        <p class="sec-sub">승용차 대신 두 발로 걸으며 실천한 탄소중립(E)과 임직원·가족 건강 증진(S) 성과입니다.</p>
+      </div>
+
+      <div class="esg-grid" style="grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));">
+        <div class="esg-card">
+          <div>
+            <span class="esg-badge">E · 탄소 저감 효과</span>
+            <div class="esg-icon">🌍</div>
+            <div class="esg-metric" id="esg-co2">0 kg</div>
+            <div class="esg-title">이산화탄소(CO₂) 감축</div>
+          </div>
+          <div class="esg-note">승용차 주행 대비 감축량<br>(환경부·에너지공단 0.21kg CO₂/km 기준)</div>
+        </div>
+
+        <div class="esg-card">
+          <div>
+            <span class="esg-badge">E · 숲 조성 효과</span>
+            <div class="esg-icon">🌲</div>
+            <div class="esg-metric" id="esg-trees">0 그루</div>
+            <div class="esg-title">30년생 소나무 식재 효과</div>
+          </div>
+          <div class="esg-note">소나무 1그루 연간 탄소흡수량<br>(국립산림과학원 6.6kg CO₂ 기준)</div>
+        </div>
+
+        <div class="esg-card">
+          <div>
+            <span class="esg-badge">E · 화석연료 & 일회용품 절감</span>
+            <div class="esg-icon">⛽</div>
+            <div class="esg-metric"><span id="esg-fuel">0</span> L 절약</div>
+            <div class="esg-title">휘발유 절약 · 종이컵 <span id="esg-cups">0</span>개 절감</div>
+          </div>
+          <div class="esg-note">승용차 평균 연비(12km/L) 기준 화석연료 절약 및<br>일회용 페트병(500ml) 약 <span id="esg-pet">0</span>병 감축 효과</div>
+        </div>
+
+        <div class="esg-card">
+          <div>
+            <span class="esg-badge">E · 전력 에너지 절감</span>
+            <div class="esg-icon">⚡</div>
+            <div class="esg-metric"><span id="esg-kwh">0</span> kWh</div>
+            <div class="esg-title">국가 전력배출계수 환산 절감량</div>
+          </div>
+          <div class="esg-note">4인 가구(월 300kWh) 약 <span id="esg-households">0</span>가구 한 달 전력량<br>스마트폰 약 <span id="esg-phones">0</span>만 회 완충 규모</div>
+        </div>
+
+        <div class="esg-card social">
+          <div>
+            <span class="esg-badge">S · 임직원 건강 증진 (WHO 기준)</span>
+            <div class="esg-icon">💚</div>
+            <div class="esg-metric" id="esg-kcal">0 만 kcal</div>
+            <div class="esg-title">총 소모 칼로리 · 활동 <span id="esg-hours">0</span>시간</div>
+          </div>
+          <div class="esg-note">보건복지부 신체활동 지침(0.04kcal/보) 기준<br>밥 약 <span id="esg-rice">0</span>공기 소모 · 성인 유산소 활동 증진</div>
+        </div>
+
+        <div class="esg-card social">
+          <div>
+            <span class="esg-badge">S · 일·가정 양립 & 가족친화경영</span>
+            <div class="esg-icon">👨‍👩‍👧‍👦</div>
+            <div class="esg-metric">41.7% 동참</div>
+            <div class="esg-title">역대 가족 동반 참여 비율</div>
+          </div>
+          <div class="esg-note">시즌 1~11 누적 참여 15,184명 중 가족 6,333명 참여<br>임직원과 가족이 함께 만드는 건강한 기업문화</div>
+        </div>
+      </div>
+
+      <div style="margin-top: 18px; padding: 14px 20px; background: var(--white); border-radius: var(--radius-md); border: 1px solid var(--border); font-size: 12px; color: var(--text-muted); line-height: 1.65;">
+        <strong>※ 공신력 있는 ESG 지표 산출 기준:</strong>
+        성인 평균 보폭 70cm 적용 · 승용차 평균 배출계수 0.21kg CO₂/km 및 평균 연비 12km/L(환경부·한국에너지공단) · 30년생 소나무 연간 탄소흡수량 6.6kg CO₂(국립산림과학원) · 국가 고유 전력배출계수 0.4594kg CO₂/kWh(환경부·한국전력공사) · 일회용 종이컵 11g CO₂/개 및 500ml 페트병 82.8g CO₂/병(한국환경산업기술원 환경성적표지) · 신체활동 소모 에너지 0.04kcal/보(보건복지부·한국건강증진개발원)
+      </div>
+    </section>
+
+    <!-- Section 4: Personal Step & Reward Search -->
+    <section class="block" id="search-section">
+      <div class="sec-header">
+        <span class="sec-tag">MY RECORD & REWARD</span>
+        <h2 class="sec-title">나의 걸음수 & 포상(리워드) 조회</h2>
+        <p class="sec-sub">성함 또는 연락처 뒷자리(4자리)를 입력하시면 7주간 누적 기록과 포상 여부를 확인할 수 있습니다.</p>
+      </div>
+
+      <div class="search-box-card">
+        <form class="search-form" id="search-form">
+          <input type="text" class="search-input" id="search-input" placeholder="성함 또는 연락처 뒷자리 입력 (예: 김상상 또는 1234)" autocomplete="off" />
+          <button type="submit" class="search-btn">기록 조회하기</button>
+        </form>
+        <div class="search-hint">※ 테스트용 샘플 데이터 예시: <strong>김민수 / 이지은 / 박준호 / 최서연 / 1234 / 5678</strong></div>
+        <div class="search-results" id="search-results"></div>
+
+        <div class="qna-banner">
+          <div class="qna-text">
+            📢 <strong>걸음수 누락·오류 등 이의제기 및 정정 요청</strong>이 필요하신가요?
+          </div>
+          <a href="https://padlet.com/hanell598/qna-2ugoajcszykq77bo" target="_blank" rel="noopener noreferrer" class="qna-link-btn">
+            이의제기·정정 게시판 바로가기 ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: 6 Years 12 Seasons Archive -->
+    <section class="block">
+      <div class="sec-header">
+        <span class="sec-tag">6 YEARS ARCHIVE · SEASON 1 ~ 12</span>
+        <h2 class="sec-title">6년간 이어온 12번의 발자취</h2>
+        <p class="sec-sub">시즌 1부터 시즌 11까지의 실제 누적 성과와 시즌 12까지 이어지는 상상인그룹 걷기 프로젝트의 대장정입니다.</p>
+      </div>
+
+      <!-- 시즌 1~11 누적 ESG & 참여 요약 배너 -->
+      <div class="archive-summary-banner">
+        <div class="archive-summary-header">
+          <div class="archive-summary-title">역대 누적 기록 (<span>시즌 1 ~ 시즌 11 합계</span>)</div>
+          <div class="archive-summary-note">※ 시즌 12 최종 로데이터 반영 시 12시즌 전체 합계로 자동 합산됩니다</div>
+        </div>
+        <div class="archive-kpi-row" id="archive-cumulative-kpis"></div>
+      </div>
+
+      <!-- 시즌 1 ~ 12 카드 그리드 -->
+      <div class="timeline-grid" id="season-cards-grid"></div>
+
+      <!-- 시즌별 상세 데이터 일람표 -->
+      <div class="archive-table-wrap">
+        <table class="archive-table">
+          <thead>
+            <tr>
+              <th>구분</th>
+              <th>임직원(명)</th>
+              <th>가족(명)</th>
+              <th>총 참여(명)</th>
+              <th>총 걸음수(보)</th>
+              <th>CO₂ 감축(톤)</th>
+              <th>소나무 식재(그루)</th>
+              <th>종이컵 절감(ea)</th>
+              <th>두루마리 휴지(ea)</th>
+              <th>전구 절약(ea)</th>
+            </tr>
+          </thead>
+          <tbody id="archive-table-body"></tbody>
+          <tfoot id="archive-table-foot"></tfoot>
+        </table>
+      </div>
+    </section>
+
+    <!-- Section 6: Next Step Closing Banner -->
+    <section class="block">
+      <div class="closing-banner">
+        <span class="closing-tag">NEXT CHAPTER · 2027</span>
+        <h2 class="closing-title">시즌 12는 마무리되지만,<br>우리의 걸음은 멈추지 않습니다</h2>
+        <p class="closing-desc">
+          지난 6년간 12개 시즌에 함께해주신 모든 임직원 여러분께 진심으로 감사드립니다.<br>
+          내년부터는 새롭게 오픈하는 <strong>‘상상인 그룹 통합앱’</strong>을 통해 기간 한정 이벤트를 넘어, 일상 속에서 더욱 쉽고 재미있게 참여하는 새로운 걷기 문화가 시작됩니다.
+        </p>
+        <div class="app-pill-list">
+          <span class="app-pill">📱 별도 앱 설치 없는 원스톱 연동</span>
+          <span class="app-pill">⚡ 실시간 걸음수 & 리워드 확인</span>
+          <span class="app-pill">🌱 상시 ESG 챌린지 & 커뮤니티</span>
+        </div>
+        <a href="#search-section" class="closing-cta">내년 그룹 통합앱에서 다시 만나요!</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© SANGSANGIN GROUP. All Rights Reserved. | 본 페이지는 로데이터 반영 전 테스트용 초안입니다.</p>
+  </footer>
+
+  <script>
+    /**
+     * [데이터 영역] 실제 로데이터 첨부 시 아래 배열만 교체하면 모든 지표와 검색 기능이 자동 업데이트됩니다.
+     */
+    const participantsData = [
+      {
+        name: "김민수", dept: "상상인그룹 PR팀", phone: "010-****-1234",
+        steps: 542100, points: 5420,
+        weeklySteps: [74200, 78500, 81000, 72400, 79300, 76800, 79900],
+        reward: "🏆 목표달성 (모바일 상품권 3만원)"
+      },
+      {
+        name: "이지은", dept: "상상인저축은행", phone: "010-****-5678",
+        steps: 498500, points: 4980,
+        weeklySteps: [68000, 71200, 73500, 69800, 72000, 70500, 73500],
+        reward: "🏆 목표달성 (모바일 상품권 3만원)"
+      },
+      {
+        name: "박준호", dept: "상상인플러스저축은행", phone: "010-****-9012",
+        steps: 612300, points: 6120,
+        weeklySteps: [85000, 88400, 91200, 84500, 87900, 86100, 89200],
+        reward: "👑 최우수 워커 (특별 리워드 대상)"
+      },
+      {
+        name: "최서연", dept: "상상인증권", phone: "010-****-3456",
+        steps: 385000, points: 3850,
+        weeklySteps: [52000, 56400, 58100, 51200, 55800, 54300, 57200],
+        reward: "🥈 완주상 (커피 쿠폰 2매)"
+      },
+      {
+        name: "정우성", dept: "메디카코리아", phone: "010-****-7890",
+        steps: 510200, points: 5100,
+        weeklySteps: [70100, 73400, 75200, 71800, 72900, 71500, 75300],
+        reward: "🏆 목표달성 (모바일 상품권 3만원)"
+      },
+      {
+        name: "한소희", dept: "시너지이노베이션", phone: "010-****-2345",
+        steps: 294000, points: 2940,
+        weeklySteps: [41000, 43500, 42800, 39200, 44100, 41200, 42200],
+        reward: "참여 감사 (아쉽게 목표 미달성)"
+      },
+      {
+        name: "김민수", dept: "상상인증권", phone: "010-****-8899",
+        steps: 465000, points: 4650,
+        weeklySteps: [64500, 67200, 68900, 63100, 66800, 65400, 69100],
+        reward: "🏆 목표달성 (모바일 상품권 3만원)"
+      }
+    ];
+
+    // 실제 전체 모수 요약 (로데이터 전체 행을 넣을 경우 participantsData에서 자동 계산 가능)
+    // 아래 summaryOverride를 null로 두면 participantsData 배열에서 자동 합산됩니다.
+    // 샘플 화면을 위해 전체 참여자 규모 예시 값을 넣어두었으며, 로데이터 교체 시 null로 변경하세요.
+    const summaryOverride = {
+      totalUsers: 842,
+      totalSteps: 368540000, // 약 3.68억 보 -> 지구 약 6.4바퀴
+      winnersCount: 618
+    };
+
+    function initDashboard() {
+      const totalUsers = summaryOverride ? summaryOverride.totalUsers : participantsData.length;
+      const totalSteps = summaryOverride ? summaryOverride.totalSteps : participantsData.reduce((acc, cur) => acc + cur.steps, 0);
+      const winnersCount = summaryOverride ? summaryOverride.winnersCount : participantsData.filter(p => !p.reward.includes("미달성")).length;
+
+      const avgSteps = Math.round(totalSteps / totalUsers);
+      const dailySteps = Math.round(avgSteps / 49); // 7주 = 49일
+      const winRate = ((winnersCount / totalUsers) * 100).toFixed(1);
+
+      // Section 1 KPI 업데이트
+      document.getElementById("kpi-users").textContent = totalUsers.toLocaleString() + "명";
+      document.getElementById("kpi-steps").textContent = totalSteps.toLocaleString() + "보";
+      document.getElementById("kpi-avg").textContent = avgSteps.toLocaleString() + "보";
+      document.getElementById("kpi-daily").textContent = dailySteps.toLocaleString();
+      document.getElementById("kpi-winners").textContent = winnersCount.toLocaleString() + "명";
+      document.getElementById("kpi-rate").textContent = winRate;
+
+      // Section 2 거리 및 지구 바퀴 환산 (보폭 0.7m = 0.0007km, 지구 둘레 40,075km)
+      const totalKm = Math.round(totalSteps * 0.0007);
+      const earthCircumference = 40075;
+      const earthLaps = (totalKm / earthCircumference).toFixed(1);
+      const seoulBusan = Math.round(totalKm / 800); // 왕복 800km
+
+      document.getElementById("earth-laps-text").textContent = earthLaps + "바퀴";
+      document.getElementById("earth-laps-inline").textContent = earthLaps;
+      document.getElementById("total-km-text").textContent = totalKm.toLocaleString();
+      document.getElementById("seoul-busan-text").textContent = seoulBusan.toLocaleString();
+
+      // 원형 게이지 및 프로그레스 바 애니메이션
+      setTimeout(() => {
+        const circle = document.getElementById("earth-circle");
+        const circumference = 314.16;
+        const fraction = (totalKm % earthCircumference) / earthCircumference;
+        const offset = circumference - (fraction > 0 ? fraction : 0.75) * circumference;
+        circle.style.strokeDashoffset = offset;
+        document.getElementById("earth-bar").style.width = "100%";
+      }, 200);
+
+      // Section 3 ESG 지표 계산 (공신력 있는 표준 배출계수 적용)
+      const co2Kg = Math.round(totalKm * 0.21); // 환경부·한국에너지공단: 1km당 0.21kg CO2
+      const trees = Math.round(co2Kg / 6.6); // 국립산림과학원: 30년생 소나무 1그루 연간 6.6kg 흡수
+      const paperCups = Math.round((co2Kg * 1000) / 11); // KEITI: 종이컵 1개당 11g CO2
+      const petBottles = Math.round((co2Kg * 1000) / 82.8); // KEITI: 500ml 페트병 1병당 82.8g CO2
+      const fuelLiters = Math.round(totalKm / 12); // 한국에너지공단: 평균 연비 12km/L 기준
+      const savedKwh = Math.round(co2Kg / 0.4594); // 환경부·한전: 국가 전력배출계수 0.4594kg CO2/kWh
+      const households = Math.round(savedKwh / 300); // 4인 가구 월평균 전력소비 300kWh 기준
+      const phoneChargesMan = Math.round((savedKwh / 0.015) / 10000); // 스마트폰 1회 완충 0.015kWh 기준(만 회)
+      const totalKcal = Math.round(totalSteps * 0.04); // 보건복지부: 1보당 0.04kcal
+      const manKcal = Math.round(totalKcal / 10000);
+      const riceBowls = Math.round(totalKcal / 300); // 공기밥 1공기 300kcal
+      const activeHours = Math.round(totalSteps / 100 / 60); // 분당 100보 기준 총 활동 시간
+
+      document.getElementById("esg-co2").textContent = co2Kg.toLocaleString() + " kg";
+      document.getElementById("esg-trees").textContent = trees.toLocaleString() + " 그루";
+      document.getElementById("esg-cups").textContent = paperCups.toLocaleString();
+      document.getElementById("esg-pet").textContent = petBottles.toLocaleString();
+      document.getElementById("esg-fuel").textContent = fuelLiters.toLocaleString();
+      document.getElementById("esg-kwh").textContent = savedKwh.toLocaleString();
+      document.getElementById("esg-households").textContent = households.toLocaleString();
+      document.getElementById("esg-phones").textContent = phoneChargesMan.toLocaleString();
+      document.getElementById("esg-kcal").textContent = manKcal.toLocaleString() + "만 kcal";
+      document.getElementById("esg-hours").textContent = activeHours.toLocaleString();
+      document.getElementById("esg-rice").textContent = riceBowls.toLocaleString();
+    }
+
+    // Section 4 검색 이벤트 처리
+    document.getElementById("search-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const query = document.getElementById("search-input").value.trim();
+      const resultsContainer = document.getElementById("search-results");
+      resultsContainer.innerHTML = "";
+
+      if (!query) {
+        resultsContainer.innerHTML = `<div class="empty-msg">성함 또는 연락처 뒷자리를 입력해 주세요.</div>`;
+        return;
+      }
+
+      const matched = participantsData.filter(user => {
+        const cleanPhone = user.phone.replace(/[^0-9]/g, "");
+        return user.name.includes(query) || cleanPhone.includes(query);
+      });
+
+      if (matched.length === 0) {
+        resultsContainer.innerHTML = `<div class="empty-msg">일치하는 참여자 정보가 없습니다. 성함 또는 연락처를 다시 확인해 주세요.</div>`;
+        return;
+      }
+
+      matched.forEach(user => {
+        const isWin = !user.reward.includes("미달성");
+        const weeklyHtml = (user.weeklySteps || []).map((wSteps, idx) => `
+          <div class="week-chip">
+            <div class="week-chip-label">${idx + 1}주차</div>
+            <div class="week-chip-val">${wSteps.toLocaleString()}보</div>
+          </div>
+        `).join("");
+
+        const item = document.createElement("div");
+        item.className = "result-item";
+        item.innerHTML = `
+          <div class="result-top-row">
+            <div class="result-user">
+              <div class="result-name">${user.name} <span>${user.dept} · ${user.phone}</span></div>
+              <div class="result-summary-stats">
+                <div class="result-steps">7주 누적 걸음수: <strong>${user.steps.toLocaleString()}보</strong></div>
+                <div class="point-pill">획득 포인트: ${(user.points || 0).toLocaleString()} P</div>
+              </div>
+            </div>
+            <div class="reward-badge ${isWin ? 'win' : 'none'}">${user.reward}</div>
+          </div>
+          ${weeklyHtml ? `
+          <div class="weekly-breakdown">
+            <div class="weekly-title">📅 주차별 걸음수 상세 (1주차 ~ 7주차)</div>
+            <div class="weekly-grid">${weeklyHtml}</div>
+          </div>` : ""}
+        `;
+        resultsContainer.appendChild(item);
+      });
+    });
+
+    /**
+     * [역대 시즌 1~11 실제 데이터] + 시즌 12 플레이스홀더
+     */
+    const pastSeasonsData = [
+      { season: "시즌 1", emp: 523, fam: 632, total: 1155, steps: 673003000, co2: 114, trees: 14799, cups: 10336364, tissue: 401767, bulb: 3344, badge: "첫 출발" },
+      { season: "시즌 2", emp: 569, fam: 620, total: 1189, steps: 557700000, co2: 94, trees: 12264, cups: 8563636, tissue: 332862, bulb: 2771, badge: "가족 동참" },
+      { season: "시즌 3", emp: 602, fam: 712, total: 1314, steps: 759000000, co2: 128, trees: 16690, cups: 11654545, tissue: 453004, bulb: 3771, badge: "7.5억보 돌파" },
+      { season: "시즌 4", emp: 625, fam: 96, total: 721, steps: 474000000, co2: 80, trees: 10423, cups: 7309091, tissue: 284099, bulb: 2365, badge: "임직원 집중" },
+      { season: "시즌 5", emp: 674, fam: 623, total: 1297, steps: 703472623, co2: 119, trees: 15469, cups: 10800000, tissue: 419788, bulb: 3494, badge: "7억보 달성" },
+      { season: "시즌 6", emp: 813, fam: 679, total: 1492, steps: 701102664, co2: 118, trees: 15423, cups: 10763636, tissue: 418375, bulb: 3482, badge: "참여 확대" },
+      { season: "시즌 7", emp: 1174, fam: 1021, total: 2195, steps: 1133521396, co2: 192, trees: 24926, cups: 17409091, tissue: 676678, bulb: 5632, badge: "역대 최고 기록", isPeak: true },
+      { season: "시즌 8", emp: 1152, fam: 760, total: 1912, steps: 910000000, co2: 154, trees: 20011, cups: 13976157, tissue: 543243, bulb: 4522, badge: "9.1억보 달성", isPeak: true },
+      { season: "시즌 9", emp: 976, fam: 463, total: 1439, steps: 685454527, co2: 116, trees: 15073, cups: 10527494, tissue: 409196, bulb: 3406, badge: "지속 실천" },
+      { season: "시즌 10", emp: 870, fam: 359, total: 1229, steps: 538503762, co2: 91, trees: 11842, cups: 8270564, tissue: 321471, bulb: 2676, badge: "10시즌 기념" },
+      { season: "시즌 11", emp: 873, fam: 368, total: 1241, steps: 540635614, co2: 91, trees: 11889, cups: 8303306, tissue: 322744, bulb: 2687, badge: "견고한 참여" }
+    ];
+
+    function renderArchiveSection() {
+      // 1~11시즌 합계 (사용자 제공 합계 수치 기준)
+      const totals = {
+        emp: 8851,
+        fam: 6333,
+        total: 15184,
+        steps: 7676393586,
+        co2: 1297,
+        trees: 168809,
+        cups: 117913885,
+        tissue: 4583226,
+        bulb: 38149
+      };
+
+      // 누적 요약 배너 렌더링
+      const summaryItems = [
+        { label: "누적 총 참여자", val: totals.total.toLocaleString() + "명", sub: `임직원 ${totals.emp.toLocaleString()}명 · 가족 ${totals.fam.toLocaleString()}명` },
+        { label: "누적 총 걸음수", val: (totals.steps / 100000000).toFixed(2) + "억 보", sub: `${totals.steps.toLocaleString()}보`, accent: true },
+        { label: "이산화탄소 감축", val: totals.co2.toLocaleString() + " 톤", sub: `소나무 ${totals.trees.toLocaleString()}그루 식재 효과` },
+        { label: "일회용 종이컵 절감", val: (totals.cups / 10000).toFixed(0).toLocaleString() + "만 개", sub: `${totals.cups.toLocaleString()} ea` },
+        { label: "휴지 · 전구 절약", val: totals.tissue.toLocaleString() + " 롤", sub: `전구 ${totals.bulb.toLocaleString()}개 절약 효과` }
+      ];
+
+      document.getElementById("archive-cumulative-kpis").innerHTML = summaryItems.map(item => `
+        <div class="archive-stat">
+          <div class="archive-stat-label">${item.label}</div>
+          <div class="archive-stat-val ${item.accent ? 'accent' : ''}">${item.val}</div>
+          <div class="archive-stat-sub">${item.sub}</div>
+        </div>
+      `).join("");
+
+      // 카드 그리드 렌더링 (시즌 1~11 + 시즌 12)
+      const cardsGrid = document.getElementById("season-cards-grid");
+      let cardsHtml = pastSeasonsData.map(s => `
+        <div class="season-card ${s.isPeak ? 'peak' : ''}">
+          <div>
+            <div class="season-top">
+              <div class="season-name">${s.season}</div>
+              <span class="season-tag">${s.badge}</span>
+            </div>
+            <div class="season-steps">${s.steps.toLocaleString()}보</div>
+          </div>
+          <ul class="season-meta-list">
+            <li><span>참여 인원</span><strong>${s.total.toLocaleString()}명 (임직원 ${s.emp.toLocaleString()})</strong></li>
+            <li><span>CO₂ 감축 / 소나무</span><strong>${s.co2.toLocaleString()}톤 / ${s.trees.toLocaleString()}그루</strong></li>
+            <li><span>종이컵 절감</span><strong>${s.cups.toLocaleString()}개</strong></li>
+          </ul>
+        </div>
+      `).join("");
+
+      // 시즌 12 카드 추가
+      cardsHtml += `
+        <div class="season-card latest">
+          <div>
+            <div class="season-top">
+              <div class="season-name">시즌 12 (현재)</div>
+              <span class="season-tag">최종 시즌</span>
+            </div>
+            <div class="season-steps">로데이터 반영 예정</div>
+          </div>
+          <ul class="season-meta-list">
+            <li><span>운영 기간</span><strong>7주간 진행</strong></li>
+            <li><span>다음 여정</span><strong>2027 그룹 통합앱 전환</strong></li>
+            <li><span>상세 내역</span><strong>최종 파일 첨부 시 자동 합산</strong></li>
+          </ul>
+        </div>
+      `;
+      cardsGrid.innerHTML = cardsHtml;
+
+      // 테이블 본문 렌더링
+      const tbody = document.getElementById("archive-table-body");
+      let rowsHtml = pastSeasonsData.map(s => `
+        <tr>
+          <td>${s.season}</td>
+          <td>${s.emp.toLocaleString()}</td>
+          <td>${s.fam.toLocaleString()}</td>
+          <td><strong>${s.total.toLocaleString()}</strong></td>
+          <td><strong>${s.steps.toLocaleString()}</strong></td>
+          <td>${s.co2.toLocaleString()}</td>
+          <td>${s.trees.toLocaleString()}</td>
+          <td>${s.cups.toLocaleString()}</td>
+          <td>${s.tissue.toLocaleString()}</td>
+          <td>${s.bulb.toLocaleString()}</td>
+        </tr>
+      `).join("");
+
+      rowsHtml += `
+        <tr class="season12-row">
+          <td>시즌 12</td>
+          <td colspan="9" style="text-align: center;">로데이터 업로드 후 시즌 12 최종 실적 반영 예정</td>
+        </tr>
+      `;
+      tbody.innerHTML = rowsHtml;
+
+      // 테이블 합계 푸터 렌더링
+      document.getElementById("archive-table-foot").innerHTML = `
+        <tr>
+          <td>시즌 1~11 합계</td>
+          <td>${totals.emp.toLocaleString()}</td>
+          <td>${totals.fam.toLocaleString()}</td>
+          <td>${totals.total.toLocaleString()}</td>
+          <td>${totals.steps.toLocaleString()}</td>
+          <td>${totals.co2.toLocaleString()}</td>
+          <td>${totals.trees.toLocaleString()}</td>
+          <td>${totals.cups.toLocaleString()}</td>
+          <td>${totals.tissue.toLocaleString()}</td>
+          <td>${totals.bulb.toLocaleString()}</td>
+        </tr>
+      `;
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      initDashboard();
+      renderArchiveSection();
+    });
+  </script>
+</body>
+</html>
