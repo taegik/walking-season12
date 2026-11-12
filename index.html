@@ -1119,6 +1119,143 @@
       margin-bottom: 4px;
     }
 
+
+    /* Winning Rules 9 Section (도전 · 연결 · 존중) */
+    .winning-wrap {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0, 164, 153, 0.22);
+    }
+
+    @media (max-width: 768px) {
+      .winning-wrap {
+        padding: 26px 18px;
+      }
+    }
+
+    .winning-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 28px;
+    }
+
+    @media (max-width: 900px) {
+      .winning-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .winning-card {
+      background: var(--bg-soft);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      border-top: 5px solid var(--primary);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.25s ease;
+    }
+
+    .winning-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .winning-card.connect {
+      border-top-color: #0284C7;
+    }
+
+    .winning-card.respect {
+      border-top-color: var(--navy);
+    }
+
+    .winning-pillar-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .winning-pillar-badge {
+      background: var(--primary);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 900;
+      padding: 5px 14px;
+      border-radius: 999px;
+      letter-spacing: -0.3px;
+    }
+
+    .winning-card.connect .winning-pillar-badge {
+      background: #0284C7;
+    }
+
+    .winning-card.respect .winning-pillar-badge {
+      background: var(--navy);
+    }
+
+    .winning-pillar-eng {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+    }
+
+    .winning-story {
+      font-size: 14px;
+      color: var(--navy-light);
+      margin-bottom: 18px;
+      line-height: 1.55;
+      font-weight: 500;
+    }
+
+    .winning-rules-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .winning-rules-list li {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--navy);
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      line-height: 1.45;
+    }
+
+    .rule-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-size: 11px;
+      font-weight: 900;
+      margin-top: 1px;
+    }
+
+    .winning-card.connect .rule-num {
+      background: #E0F2FE;
+      color: #0369A1;
+    }
+
+    .winning-card.respect .rule-num {
+      background: #F1F5F9;
+      color: var(--navy);
+    }
+
     /* Section 6: Next Step Closing Banner */
     .closing-banner {
       background: linear-gradient(135deg, var(--navy) 0%, #113836 100%);
@@ -1216,7 +1353,7 @@
       <div class="hero-content">
         <span class="hero-eyebrow">7주간의 건강한 발걸음, 지구를 지키는 ESG 실천</span>
         <h1 class="hero-title">사내 걷기 프로젝트<br><span>시즌 12</span> 종료 리포트</h1>
-        <p class="hero-sub">지난 7주간 임직원 여러분의 한 걸음 한 걸음이 모여 건강한 일상과 지속가능한 내일을 만들었습니다.</p>
+        <p class="hero-sub">상상인 위닝룰즈의 핵심 가치 <strong>‘도전 · 연결 · 존중’</strong>을 일상 속 걸음으로 실천하며 건강한 조직문화와 지속가능한 ESG 내일을 만들었습니다.</p>
       </div>
     </div>
   </header>
@@ -1545,13 +1682,80 @@
       </div>
     </section>
 
+    <!-- Winning Rules 9 Section -->
+    <section class="block">
+      <div class="winning-wrap">
+        <div class="sec-header" style="margin-bottom: 12px;">
+          <span class="sec-tag">SANGSANGIN MVC · WINNING RULES 9</span>
+          <h2 class="sec-title">상상인 위닝룰즈로 완성한 7주간의 발걸음</h2>
+          <p class="sec-sub">목표를 향한 과감한 <strong>도전</strong>, 계열사와 가족을 잇는 <strong>연결</strong>, 서로를 응원하는 <strong>존중</strong>이 모여 12시즌의 역사를 만들었습니다.</p>
+        </div>
+
+        <div class="winning-grid">
+          <!-- 1. 도전 -->
+          <div class="winning-card">
+            <div>
+              <div class="winning-pillar-head">
+                <span class="winning-pillar-badge">🔥 도전 · CHALLENGE</span>
+                <span class="winning-pillar-eng">RULE 01 ~ 03</span>
+              </div>
+              <p class="winning-story">
+                어제보다 한 걸음 더 나아가는 시도가 모여 7주간의 목표 달성과 12시즌 연속 완주라는 변화를 이끌었습니다.
+              </p>
+            </div>
+            <ul class="winning-rules-list">
+              <li><span class="rule-num">1</span><span>변화를 이끌거나, 비키거나.</span></li>
+              <li><span class="rule-num">2</span><span>완성보다 속도, 성공보다 시도.</span></li>
+              <li><span class="rule-num">3</span><span>배움은 생존을 위한 가장 공격적인 투자다.</span></li>
+            </ul>
+          </div>
+
+          <!-- 2. 연결 -->
+          <div class="winning-card connect">
+            <div>
+              <div class="winning-pillar-head">
+                <span class="winning-pillar-badge">🔗 연결 · CONNECT</span>
+                <span class="winning-pillar-eng">RULE 04 ~ 06</span>
+              </div>
+              <p class="winning-story">
+                부서와 계열사의 경계를 넘어 전 임직원과 가족이 한마음으로 발맞추며 ESG 가치로 연결되었습니다.
+              </p>
+            </div>
+            <ul class="winning-rules-list">
+              <li><span class="rule-num">4</span><span>외부 인사이트를 내부 자산으로 연결한다.</span></li>
+              <li><span class="rule-num">5</span><span>직급에 상관없이 전원이 의사결정에 참여해야 한다.</span></li>
+              <li><span class="rule-num">6</span><span>우리 팀을 넘어 우리 회사의 답을 찾는다.</span></li>
+            </ul>
+          </div>
+
+          <!-- 3. 존중 -->
+          <div class="winning-card respect">
+            <div>
+              <div class="winning-pillar-head">
+                <span class="winning-pillar-badge">🤝 존중 · RESPECT</span>
+                <span class="winning-pillar-eng">RULE 07 ~ 09</span>
+              </div>
+              <p class="winning-story">
+                서로의 속도를 배려하고 진심 어린 응원을 건네며 함께 걷는 건강한 소통 문화를 정착시켰습니다.
+              </p>
+            </div>
+            <ul class="winning-rules-list">
+              <li><span class="rule-num">7</span><span>우리는 뒤에서 말하지 않는다.</span></li>
+              <li><span class="rule-num">8</span><span>동료의 의견을 듣는 것도 월급에 포함이다.</span></li>
+              <li><span class="rule-num">9</span><span>다름을 인정해라. 내가 틀릴 수도 있다.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Section 6: Next Step Closing Banner -->
     <section class="block">
       <div class="closing-banner">
         <span class="closing-tag">NEXT CHAPTER · 2027</span>
         <h2 class="closing-title">시즌 12는 마무리되지만,<br>우리의 걸음은 멈추지 않습니다</h2>
         <p class="closing-desc">
-          지난 6년간 12개 시즌에 함께해주신 모든 임직원 여러분께 진심으로 감사드립니다.<br>
+          지난 6년간 <strong>도전·연결·존중</strong>의 위닝룰즈를 실천하며 12개 시즌에 함께해주신 모든 임직원 여러분께 감사드립니다.<br>
           내년부터는 새롭게 오픈하는 <strong>‘상상인 그룹 통합앱’</strong>을 통해 기간 한정 이벤트를 넘어, 일상 속에서 더욱 쉽고 재미있게 참여하는 새로운 걷기 문화가 시작됩니다.
         </p>
         <div class="app-pill-list">
