@@ -1258,6 +1258,407 @@
       color: var(--navy);
     }
 
+
+    /* Survey Section (익명 설문조사 및 데이터베이스 연동/집계 뷰) */
+    .survey-wrap {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      box-shadow: var(--shadow);
+      border: 1.5px solid rgba(0, 164, 153, 0.25);
+    }
+
+    @media (max-width: 768px) {
+      .survey-wrap {
+        padding: 26px 18px;
+      }
+    }
+
+    .survey-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+
+    .survey-tab-btn {
+      padding: 10px 22px;
+      border-radius: 999px;
+      border: 2px solid var(--border);
+      background: var(--white);
+      color: var(--navy-light);
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+
+    .survey-tab-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: var(--white);
+      box-shadow: 0 4px 12px rgba(0, 164, 153, 0.25);
+    }
+
+    .survey-part-title {
+      font-size: 16px;
+      font-weight: 900;
+      color: var(--primary-dark);
+      background: var(--primary-light);
+      padding: 10px 18px;
+      border-radius: 12px;
+      margin: 28px 0 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .survey-part-title:first-of-type {
+      margin-top: 0;
+    }
+
+    .q-card {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 22px 24px;
+      margin-bottom: 16px;
+    }
+
+    .q-title {
+      font-size: 15.5px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    .q-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 6px;
+      background: #E2E8F0;
+      color: var(--navy-light);
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .q-option-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 11px 15px;
+      font-size: 14px;
+      color: var(--navy);
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+    }
+
+    .q-option-label:hover {
+      border-color: var(--primary);
+      background: #F0FDFA;
+    }
+
+    .q-option-label input[type="radio"],
+    .q-option-label input[type="checkbox"] {
+      accent-color: var(--primary);
+      width: 17px;
+      height: 17px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .q-etc-input {
+      flex: 1;
+      border: none;
+      border-bottom: 1.5px solid var(--border);
+      padding: 4px 8px;
+      font-size: 13.5px;
+      font-family: inherit;
+      outline: none;
+      background: transparent;
+      min-width: 140px;
+    }
+
+    .q-etc-input:focus {
+      border-bottom-color: var(--primary);
+    }
+
+    .q-textarea {
+      width: 100%;
+      min-height: 86px;
+      padding: 14px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      font-size: 14px;
+      font-family: inherit;
+      resize: vertical;
+      outline: none;
+      background: var(--white);
+      transition: border-color 0.2s;
+    }
+
+    .q-textarea:focus {
+      border-color: var(--primary);
+    }
+
+    .survey-submit-row {
+      text-align: center;
+      margin-top: 28px;
+    }
+
+    .survey-submit-btn {
+      background: var(--primary);
+      color: var(--white);
+      border: none;
+      padding: 16px 40px;
+      font-size: 16px;
+      font-weight: 800;
+      border-radius: 999px;
+      cursor: pointer;
+      font-family: inherit;
+      box-shadow: 0 8px 20px rgba(0, 164, 153, 0.3);
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .survey-submit-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .survey-submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .survey-status-msg {
+      margin-top: 14px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    /* Survey Dashboard (취합 결과 뷰) */
+    .survey-dash-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: var(--bg-soft);
+      padding: 16px 20px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      margin-bottom: 20px;
+    }
+
+    .survey-total-badge {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .survey-total-badge strong {
+      color: var(--primary);
+      font-size: 20px;
+    }
+
+    .survey-export-btn {
+      background: var(--navy);
+      color: var(--white);
+      border: none;
+      padding: 9px 16px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s;
+    }
+
+    .survey-export-btn:hover {
+      background: var(--primary);
+    }
+
+    .stat-bar-row {
+      margin-bottom: 10px;
+    }
+
+    .stat-bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .stat-bar-track {
+      height: 10px;
+      background: #E2E8F0;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .stat-bar-fill {
+      height: 100%;
+      background: var(--primary);
+      border-radius: 999px;
+      transition: width 0.5s ease;
+    }
+
+    .subjective-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 240px;
+      overflow-y: auto;
+    }
+
+    .subjective-item {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 13.5px;
+      color: var(--navy-light);
+      line-height: 1.5;
+    }
+
+    .db-config-note {
+      margin-top: 18px;
+      padding: 12px 16px;
+      background: #F8FAFC;
+      border: 1px dashed var(--border);
+      border-radius: 10px;
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+
+    /* Admin Password Modal for CSV Export */
+    .pwd-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.55);
+      backdrop-filter: blur(3px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 20px;
+    }
+
+    .pwd-modal-backdrop.open {
+      display: flex;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .pwd-modal-box {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 30px 28px;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.25);
+      border: 1.5px solid rgba(0, 164, 153, 0.3);
+      text-align: center;
+    }
+
+    .pwd-modal-icon {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .pwd-modal-title {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .pwd-modal-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    .pwd-modal-input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      font-size: 15px;
+      font-family: inherit;
+      text-align: center;
+      letter-spacing: 1px;
+      outline: none;
+      margin-bottom: 10px;
+      transition: border-color 0.2s;
+    }
+
+    .pwd-modal-input:focus {
+      border-color: var(--primary);
+    }
+
+    .pwd-modal-err {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #DC2626;
+      min-height: 18px;
+      margin-bottom: 12px;
+    }
+
+    .pwd-modal-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .pwd-modal-cancel,
+    .pwd-modal-confirm {
+      flex: 1;
+      padding: 12px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      border: none;
+      transition: background 0.2s;
+    }
+
+    .pwd-modal-cancel {
+      background: #F1F5F9;
+      color: var(--navy-light);
+    }
+
+    .pwd-modal-cancel:hover {
+      background: #E2E8F0;
+    }
+
+    .pwd-modal-confirm {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .pwd-modal-confirm:hover {
+      background: var(--primary-dark);
+    }
+
     /* Section 6: Next Step Closing Banner */
     .closing-banner {
       background: linear-gradient(135deg, var(--navy) 0%, #113836 100%);
@@ -1751,6 +2152,163 @@
       </div>
     </section>
 
+    <!-- Anonymous Survey Section -->
+    <section class="block" id="survey-section">
+      <div class="survey-wrap">
+        <div class="sec-header" style="margin-bottom: 22px;">
+          <span class="sec-tag">ANONYMOUS SURVEY · 2027 개편 의견 수렴</span>
+          <h2 class="sec-title">상상인 걷기 프로젝트 개편 설문조사</h2>
+          <p class="sec-sub">내년부터 새롭게 도입되는 <strong>‘그룹 통합앱’</strong> 기반 상시 걷기 문화를 위해 익명으로 자유롭게 의견을 남겨주세요.</p>
+        </div>
+
+        <div class="survey-tabs">
+          <button type="button" class="survey-tab-btn active" id="tab-form-btn" onclick="switchSurveyTab('form')">✍️ 설문 참여하기 (익명)</button>
+          <button type="button" class="survey-tab-btn" id="tab-result-btn" onclick="switchSurveyTab('result')">📊 실시간 취합 결과 보기</button>
+        </div>
+
+        <!-- Tab 1: 설문 폼 -->
+        <form id="walking-survey-form">
+          <div class="survey-part-title">Part 1. 지난 걷기 프로젝트 회고 및 소감</div>
+
+          <!-- Q1 -->
+          <div class="q-card">
+            <div class="q-title">Q1. 지금까지 ‘상상인 걷기 프로젝트(시즌 1~12)’에 몇 회 정도 참여하셨나요? <span class="q-badge">단일 선택 · 필수</span></div>
+            <div class="q-options">
+              <label class="q-option-label"><input type="radio" name="q1" value="처음 참여했다 (1회)" required> 1. 처음 참여했다 (1회)</label>
+              <label class="q-option-label"><input type="radio" name="q1" value="2~3회 정도 참여했다"> 2. 2~3회 정도 참여했다</label>
+              <label class="q-option-label"><input type="radio" name="q1" value="4~6회 정도 참여했다"> 3. 4~6회 정도 참여했다</label>
+              <label class="q-option-label"><input type="radio" name="q1" value="7회 이상 꾸준히 참여했다"> 4. 7회 이상 꾸준히 참여했다</label>
+              <label class="q-option-label"><input type="radio" name="q1" value="아쉽게도 아직 참여해 본 적이 없다"> 5. 아쉽게도 아직 참여해 본 적이 없다</label>
+            </div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="q-card">
+            <div class="q-title">Q2. 기존 걷기 프로젝트에서 가장 좋았던 점은 무엇인가요? <span class="q-badge">최대 2개 선택</span></div>
+            <div class="q-options" data-max="2">
+              <label class="q-option-label"><input type="checkbox" name="q2" value="일상 속 걷기 습관 형성 및 건강 증진"> 1. 일상 속 걷기 습관 형성 및 건강 증진</label>
+              <label class="q-option-label"><input type="checkbox" name="q2" value="목표 달성 시 지급되는 포상(리워드)의 성취감"> 2. 목표 달성 시 지급되는 포상(리워드)의 성취감</label>
+              <label class="q-option-label"><input type="checkbox" name="q2" value="가족·지인과 함께 참여하며 나누는 건강한 소통"> 3. 가족·지인과 함께 참여하며 나누는 건강한 소통</label>
+              <label class="q-option-label"><input type="checkbox" name="q2" value="동료들과 걸음수/순위를 비교하며 즐기는 선의의 경쟁"> 4. 동료들과 걸음수/순위를 비교하며 즐기는 선의의 경쟁</label>
+              <label class="q-option-label"><input type="checkbox" name="q2" value="내 걸음이 탄소 저감(ESG) 및 나눔으로 이어진다는 보람"> 5. 내 걸음이 탄소 저감(ESG) 및 나눔으로 이어진다는 보람</label>
+              <label class="q-option-label">
+                <input type="checkbox" name="q2" value="기타"> 6. 기타
+                <input type="text" class="q-etc-input" id="q2-etc" placeholder="직접 입력">
+              </label>
+            </div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="q-card">
+            <div class="q-title">Q3. 기존 외부 앱(워크온)을 이용하면서 불편했거나 개선이 필요하다고 느꼈던 점이 있다면 선택해 주세요. <span class="q-badge">중복 선택</span></div>
+            <div class="q-options">
+              <label class="q-option-label"><input type="checkbox" name="q3" value="별도 앱 설치 및 회원가입·인증 절차의 번거로움"> 1. 별도 앱 설치 및 회원가입·인증 절차의 번거로움</label>
+              <label class="q-option-label"><input type="checkbox" name="q3" value="걸음수 연동 오류 및 누락 문제"> 2. 걸음수 연동 오류 및 누락 문제</label>
+              <label class="q-option-label"><input type="checkbox" name="q3" value="약 7주간 집중 운영되는 단기 시즌제 방식의 피로감"> 3. 약 7주간 집중 운영되는 단기 시즌제 방식의 피로감</label>
+              <label class="q-option-label"><input type="checkbox" name="q3" value="포상 기준의 획일화 (상위권 위주 또는 단일 목표 기준)"> 4. 포상 기준의 획일화 (상위권 위주 또는 단일 목표 기준)</label>
+              <label class="q-option-label"><input type="checkbox" name="q3" value="특별히 불편한 점 없이 만족스러웠다"> 5. 특별히 불편한 점 없이 만족스러웠다</label>
+              <label class="q-option-label">
+                <input type="checkbox" name="q3" value="기타"> 6. 기타
+                <input type="text" class="q-etc-input" id="q3-etc" placeholder="직접 입력">
+              </label>
+            </div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="q-card">
+            <div class="q-title">Q4. 지난 6년간 걷기 프로젝트에 참여하며 기억에 남는 에피소드나 소감이 있다면 자유롭게 들려주세요. <span class="q-badge">주관식 · 선택</span></div>
+            <textarea class="q-textarea" id="q4-text" placeholder="예: 가족과 주말마다 산책하는 습관이 생겼어요, 점심시간에 팀원들과 같이 걸으며 대화가 늘었습니다 등"></textarea>
+          </div>
+
+          <div class="survey-part-title">Part 2. 2027년 ‘그룹 통합앱’ 기반 새로운 걷기 프로그램 선호도</div>
+
+          <!-- Q5 (위닝픽 등 반영) -->
+          <div class="q-card">
+            <div class="q-title">Q5. 내년부터는 별도 앱 설치 없이 ‘그룹 통합앱’을 통해 걷기 프로젝트가 운영됩니다. 가장 기대되는 점은 무엇인가요? <span class="q-badge">단일 선택 · 필수</span></div>
+            <div class="q-options">
+              <label class="q-option-label"><input type="radio" name="q5" value="별도 앱 설치나 로그인 없이 바로 참여할 수 있는 편의성" required> 1. 별도 앱 설치나 로그인 없이 바로 참여할 수 있는 편의성</label>
+              <label class="q-option-label"><input type="radio" name="q5" value="실시간 걸음수와 내 포상/포인트 현황의 직관적인 확인"> 2. 실시간 걸음수와 내 포상/포인트 현황의 직관적인 확인</label>
+              <label class="q-option-label"><input type="radio" name="q5" value="사내 다른 프로그램(위닝픽 등)과 연계된 통합 경험"> 3. 사내 다른 프로그램(위닝픽 등)과 연계된 통합 경험</label>
+              <label class="q-option-label"><input type="radio" name="q5" value="기간 제한 없이 언제든 내 페이스대로 참여할 수 있는 환경"> 4. 기간 제한 없이 언제든 내 페이스대로 참여할 수 있는 환경</label>
+              <label class="q-option-label">
+                <input type="radio" name="q5" value="기타"> 5. 기타
+                <input type="text" class="q-etc-input" id="q5-etc" placeholder="직접 입력">
+              </label>
+            </div>
+          </div>
+
+          <!-- Q6 -->
+          <div class="q-card">
+            <div class="q-title">Q6. 기존 ‘약 7주 단위 시즌제’에서 ‘연중 상시 운영’으로 전환될 경우, 어떤 운영 주기가 가장 동기부여가 될 것 같나요? <span class="q-badge">단일 선택 · 필수</span></div>
+            <div class="q-options">
+              <label class="q-option-label"><input type="radio" name="q6" value="월별 챌린지형 (매월 새로운 목표와 소소한 리워드)" required> 1. <strong>월별 챌린지형:</strong> 매월 새로운 목표 걸음수와 소소한 리워드 제공</label>
+              <label class="q-option-label"><input type="radio" name="q6" value="분기별 챌린지형 (3개월 단위 누적 목표 달성 포상)"> 2. <strong>분기별 챌린지형:</strong> 3개월 단위로 누적 목표 달성 시 포상 지급</label>
+              <label class="q-option-label"><input type="radio" name="q6" value="일상 데일리형 (매일/매주 즉시 소액 포인트 적립)"> 3. <strong>일상 데일리형:</strong> 매일/매주 목표 달성 시 즉시 소액 포인트 적립</label>
+              <label class="q-option-label"><input type="radio" name="q6" value="혼합형 (상시 포인트 적립 + 연 2회 특별 집중 시즌)"> 4. <strong>혼합형(추천):</strong> 평소엔 상시 포인트 적립 + 연 2회 특별 집중 시즌/스팟 이벤트 병행</label>
+              <label class="q-option-label">
+                <input type="radio" name="q6" value="기타"> 5. 기타
+                <input type="text" class="q-etc-input" id="q6-etc" placeholder="직접 입력">
+              </label>
+            </div>
+          </div>
+
+          <!-- Q7 -->
+          <div class="q-card">
+            <div class="q-title">Q7. 새로운 걷기 프로그램에 도입되었으면 하는 '챌린지 방식'이나 '미션'을 선택해 주세요. <span class="q-badge">최대 2개 선택</span></div>
+            <div class="q-options" data-max="2">
+              <label class="q-option-label"><input type="checkbox" name="q7" value="개인 목표 달성형 (초급/중급/고급 목표 직접 선택)"> 1. <strong>개인 목표 달성형:</strong> 본인 체력에 맞게 목표 단계(초급/중급/고급)를 직접 선택해 달성</label>
+              <label class="q-option-label"><input type="checkbox" name="q7" value="팀/부서 대항전 (평균 걸음수 경쟁)"> 2. <strong>팀/부서 대항전:</strong> 부서원 또는 랜덤 조 편성으로 평균 걸음수 경쟁</label>
+              <label class="q-option-label"><input type="checkbox" name="q7" value="주말/스팟 게릴라 미션 (주말 7,777보, 계단 이용 등)"> 3. <strong>주말/스팟 게릴라 미션:</strong> 주말 7,777보 달성, 계단 이용 인증 등 깜짝 이벤트</label>
+              <label class="q-option-label"><input type="checkbox" name="q7" value="테마 코스 완주형 (올레길, 백두대간 등 가상 코스 완주)"> 4. <strong>테마 코스 완주형:</strong> 앱 내 가상 코스(제주 올레길, 백두대간 등) 거리 누적 완주</label>
+              <label class="q-option-label"><input type="checkbox" name="q7" value="기부·ESG 매칭형 (누적 걸음수만큼 사회공헌 자동 기부)"> 5. <strong>기부·ESG 매칭형:</strong> 임직원 누적 걸음수만큼 취약계층/환경단체에 자동 기부</label>
+              <label class="q-option-label">
+                <input type="checkbox" name="q7" value="기타"> 6. 기타
+                <input type="text" class="q-etc-input" id="q7-etc" placeholder="직접 입력">
+              </label>
+            </div>
+          </div>
+
+          <!-- Q8 -->
+          <div class="q-card">
+            <div class="q-title">Q8. 어떤 방식의 보상(리워드)이 제공될 때 가장 적극적으로 참여하고 싶으신가요? <span class="q-badge">단일 선택 · 필수</span></div>
+            <div class="q-options">
+              <label class="q-option-label"><input type="radio" name="q8" value="목표 달성자 전원 소액 모바일 쿠폰/포인트 지급" required> 1. 목표 달성자 전원에게 지급되는 소액 모바일 쿠폰/포인트 (확실한 보상)</label>
+              <label class="q-option-label"><input type="radio" name="q8" value="추첨을 통한 고액 경품 및 특별 리워드"> 2. 추첨을 통한 고액 경품 및 특별 리워드 (행운의 기회)</label>
+              <label class="q-option-label"><input type="radio" name="q8" value="우수 달성자(랭킹 상위권) 대상 차등 포상"> 3. 우수 달성자(랭킹 상위권) 대상 차등 포상</label>
+              <label class="q-option-label"><input type="radio" name="q8" value="적립 포인트를 원하는 상품으로 직접 교환"> 4. 일정 걸음수마다 쌓이는 포인트를 원하는 상품으로 직접 교환하는 방식</label>
+              <label class="q-option-label"><input type="radio" name="q8" value="리워드보다 건강한 습관과 기부 등 의미 있는 참여"> 5. 리워드보다 건강한 습관과 기부 등 의미 있는 참여 자체가 중요함</label>
+            </div>
+          </div>
+
+          <div class="survey-part-title">Part 3. 임직원 자유 아이디어 제안</div>
+
+          <!-- Q9 -->
+          <div class="q-card">
+            <div class="q-title">Q9. “이런 이벤트나 기능이 있으면 진짜 매일 걸을 것 같다!” 하는 새로운 아이디어가 있다면 자유롭게 제안해 주세요. <span class="q-badge">주관식 · 선택</span></div>
+            <textarea class="q-textarea" id="q9-text" placeholder="예: 부서별 릴레이 챌린지, 비 오는 날/폭염 시 보너스 포인트, 사내 동호회 연계 등"></textarea>
+          </div>
+
+          <div class="survey-submit-row">
+            <button type="submit" class="survey-submit-btn" id="survey-submit-btn">익명으로 설문 제출하기</button>
+            <div class="survey-status-msg" id="survey-status-msg"></div>
+          </div>
+        </form>
+
+        <!-- Tab 2: 취합 결과 대시보드 -->
+        <div id="survey-results-panel" style="display: none;">
+          <div class="survey-dash-toolbar">
+            <div class="survey-total-badge">누적 설문 응답 수: <strong id="survey-total-count">0</strong>명 <span id="survey-db-mode" style="font-size:12px; font-weight:600; color:var(--text-muted); margin-left:6px;"></span></div>
+            <button type="button" class="survey-export-btn" onclick="openAdminPwdModal()">🔒 취합 결과 엑셀(CSV) 다운로드 (관리자)</button>
+          </div>
+          <div id="survey-charts-container"></div>
+          <div class="db-config-note">
+            <strong>💡 전사 취합 데이터베이스(DB) 연결 안내:</strong><br>
+            현재는 브라우저 내장 저장소(LocalStorage)에 실시간 저장되어 즉시 취합 결과를 확인 및 CSV 다운로드할 수 있습니다. 전 임직원 응답을 하나의 클라우드 DB로 자동 취합하려면 HTML 하단 스크립트의 <code>SURVEY_WEBHOOK_URL</code> 변수에 <strong>Google Apps Script 웹 앱 URL</strong>(또는 사내 API 엔드포인트)만 붙여넣으면 즉시 외부 DB와 양방향 동기화됩니다.
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Section 6: Next Step Closing Banner -->
     <section class="block">
       <div class="closing-banner">
@@ -1765,10 +2323,27 @@
           <span class="app-pill">⚡ 실시간 걸음수 & 리워드 확인</span>
           <span class="app-pill">🌱 상시 ESG 챌린지 & 커뮤니티</span>
         </div>
-        <a href="#search-section" class="closing-cta">내년 그룹 통합앱에서 다시 만나요!</a>
+        <a href="#survey-section" class="closing-cta">2027 그룹 통합앱 걷기 개편 설문 참여하기 ✍️</a>
       </div>
     </section>
   </main>
+
+  <!-- Admin Password Modal -->
+  <div class="pwd-modal-backdrop" id="admin-pwd-modal" role="dialog" aria-modal="true" aria-labelledby="pwd-modal-title">
+    <div class="pwd-modal-box">
+      <div class="pwd-modal-icon">🔒</div>
+      <div class="pwd-modal-title" id="pwd-modal-title">관리자 인증</div>
+      <div class="pwd-modal-desc">취합 결과 엑셀(CSV) 다운로드는 관리자만 이용할 수 있습니다.<br>비밀번호를 입력해 주세요.</div>
+      <form id="admin-pwd-form">
+        <input type="password" class="pwd-modal-input" id="admin-pwd-input" placeholder="관리자 비밀번호 입력" autocomplete="off" />
+        <div class="pwd-modal-err" id="admin-pwd-err"></div>
+        <div class="pwd-modal-actions">
+          <button type="button" class="pwd-modal-cancel" onclick="closeAdminPwdModal()">취소</button>
+          <button type="submit" class="pwd-modal-confirm">확인 및 다운로드</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
   <footer>
     <p>© SANGSANGIN GROUP. All Rights Reserved. | 본 페이지는 로데이터 반영 전 테스트용 초안입니다.</p>
@@ -2108,6 +2683,286 @@
           <td>${totals.bulb.toLocaleString()}</td>
         </tr>
       `;
+    }
+
+
+    /**
+     * [설문조사 데이터 저장 및 취합 결과 렌더링 모듈]
+     * - 기본: 브라우저 LocalStorage에 익명 응답 누적 저장 + CSV 엑셀 내보내기 지원
+     * - 확장: 아래 SURVEY_WEBHOOK_URL에 Google Apps Script / Supabase / 사내 API URL 입력 시 중앙 DB로 자동 전송 및 조회
+     */
+    const SURVEY_WEBHOOK_URL = ""; // 예: "https://script.google.com/macros/s/XXXXX/exec"
+    const LOCAL_SURVEY_KEY = "sangsangin_walking_s12_survey_v1";
+
+    // 최대 선택 개수 제한 (Q2, Q7 최대 2개)
+    document.querySelectorAll(".q-options[data-max]").forEach(group => {
+      const max = parseInt(group.getAttribute("data-max"), 10);
+      const boxes = group.querySelectorAll('input[type="checkbox"]');
+      boxes.forEach(box => {
+        box.addEventListener("change", () => {
+          const checked = group.querySelectorAll('input[type="checkbox"]:checked');
+          if (checked.length > max) {
+            box.checked = false;
+            alert(`해당 문항은 최대 ${max}개까지만 선택할 수 있습니다.`);
+          }
+        });
+      });
+    });
+
+    function getLocalResponses() {
+      try {
+        return JSON.parse(localStorage.getItem(LOCAL_SURVEY_KEY) || "[]");
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveLocalResponse(entry) {
+      const list = getLocalResponses();
+      list.push(entry);
+      localStorage.setItem(LOCAL_SURVEY_KEY, JSON.stringify(list));
+    }
+
+    async function fetchAllResponses() {
+      if (SURVEY_WEBHOOK_URL) {
+        try {
+          const res = await fetch(SURVEY_WEBHOOK_URL);
+          if (res.ok) {
+            const data = await res.json();
+            if (Array.isArray(data)) return data;
+          }
+        } catch (err) {
+          console.warn("외부 DB 조회 실패, 로컬 데이터 표시:", err);
+        }
+      }
+      return getLocalResponses();
+    }
+
+    document.getElementById("walking-survey-form").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById("survey-submit-btn");
+      const statusMsg = document.getElementById("survey-status-msg");
+      btn.disabled = true;
+      statusMsg.textContent = "응답을 저장하고 있습니다...";
+
+      const getRadioVal = (name, etcId) => {
+        const el = document.querySelector(`input[name="${name}"]:checked`);
+        if (!el) return "";
+        if (el.value === "기타" && etcId) {
+          const txt = document.getElementById(etcId).value.trim();
+          return txt ? `기타(${txt})` : "기타";
+        }
+        return el.value;
+      };
+
+      const getCheckVals = (name, etcId) => {
+        const els = Array.from(document.querySelectorAll(`input[name="${name}"]:checked`));
+        return els.map(el => {
+          if (el.value === "기타" && etcId) {
+            const txt = document.getElementById(etcId).value.trim();
+            return txt ? `기타(${txt})` : "기타";
+          }
+          return el.value;
+        });
+      };
+
+      const payload = {
+        submittedAt: new Date().toLocaleString("ko-KR"),
+        q1: getRadioVal("q1"),
+        q2: getCheckVals("q2", "q2-etc"),
+        q3: getCheckVals("q3", "q3-etc"),
+        q4: document.getElementById("q4-text").value.trim(),
+        q5: getRadioVal("q5", "q5-etc"),
+        q6: getRadioVal("q6", "q6-etc"),
+        q7: getCheckVals("q7", "q7-etc"),
+        q8: getRadioVal("q8"),
+        q9: document.getElementById("q9-text").value.trim()
+      };
+
+      saveLocalResponse(payload);
+
+      if (SURVEY_WEBHOOK_URL) {
+        try {
+          await fetch(SURVEY_WEBHOOK_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+        } catch (err) {
+          console.error("외부 DB 전송 오류:", err);
+        }
+      }
+
+      btn.disabled = false;
+      this.reset();
+      statusMsg.textContent = "✅ 소중한 의견이 익명으로 정상 등록되었습니다! 감사합니다.";
+      setTimeout(() => {
+        switchSurveyTab("result");
+      }, 900);
+    });
+
+    async function switchSurveyTab(tab) {
+      const formEl = document.getElementById("walking-survey-form");
+      const resEl = document.getElementById("survey-results-panel");
+      const btnForm = document.getElementById("tab-form-btn");
+      const btnRes = document.getElementById("tab-result-btn");
+
+      if (tab === "form") {
+        formEl.style.display = "block";
+        resEl.style.display = "none";
+        btnForm.classList.add("active");
+        btnRes.classList.remove("active");
+      } else {
+        formEl.style.display = "none";
+        resEl.style.display = "block";
+        btnForm.classList.remove("active");
+        btnRes.classList.add("active");
+        await renderSurveyDashboard();
+      }
+    }
+
+    async function renderSurveyDashboard() {
+      const responses = await fetchAllResponses();
+      const total = responses.length;
+      document.getElementById("survey-total-count").textContent = total.toLocaleString();
+      document.getElementById("survey-db-mode").textContent = SURVEY_WEBHOOK_URL
+        ? "(클라우드 DB 연동 중)"
+        : "(브라우저 로컬 DB 저장 모드)";
+
+      const container = document.getElementById("survey-charts-container");
+      if (total === 0) {
+        container.innerHTML = `<div class="empty-msg">아직 등록된 설문 응답이 없습니다. 첫 번째로 의견을 남겨주세요!</div>`;
+        return;
+      }
+
+      const questionsMeta = [
+        { key: "q1", title: "Q1. 기존 걷기 프로젝트 참여 횟수", isMulti: false },
+        { key: "q2", title: "Q2. 기존 프로젝트에서 가장 좋았던 점 (중복)", isMulti: true },
+        { key: "q3", title: "Q3. 기존 외부 앱(워크온) 불편 및 개선점 (중복)", isMulti: true },
+        { key: "q5", title: "Q5. 그룹 통합앱 전환 시 가장 기대되는 점", isMulti: false },
+        { key: "q6", title: "Q6. 연중 상시 운영 전환 시 선호 운영 주기", isMulti: false },
+        { key: "q7", title: "Q7. 희망하는 신규 챌린지·미션 방식 (중복)", isMulti: true },
+        { key: "q8", title: "Q8. 선호하는 보상(리워드) 방식", isMulti: false }
+      ];
+
+      let html = "";
+      questionsMeta.forEach(qm => {
+        const counts = {};
+        responses.forEach(r => {
+          const val = r[qm.key];
+          if (Array.isArray(val)) {
+            val.forEach(v => { if (v) counts[v] = (counts[v] || 0) + 1; });
+          } else if (val) {
+            counts[val] = (counts[val] || 0) + 1;
+          }
+        });
+
+        const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+        const barsHtml = sorted.map(([label, cnt]) => {
+          const pct = Math.round((cnt / total) * 100);
+          return `
+            <div class="stat-bar-row">
+              <div class="stat-bar-label"><span>${escapeHtml(label)}</span><span>${cnt}명 (${pct}%)</span></div>
+              <div class="stat-bar-track"><div class="stat-bar-fill" style="width: ${pct}%;"></div></div>
+            </div>
+          `;
+        }).join("");
+
+        html += `
+          <div class="q-card">
+            <div class="q-title">${qm.title}</div>
+            ${barsHtml || '<div style="font-size:13px;color:var(--text-muted);">응답 없음</div>'}
+          </div>
+        `;
+      });
+
+      const q4List = responses.map(r => r.q4).filter(Boolean).reverse();
+      const q9List = responses.map(r => r.q9).filter(Boolean).reverse();
+
+      html += `
+        <div class="q-card">
+          <div class="q-title">Q4. 기억에 남는 에피소드 및 참여 소감 (${q4List.length}건)</div>
+          <div class="subjective-list">
+            ${q4List.length ? q4List.map(t => `<div class="subjective-item">💬 ${escapeHtml(t)}</div>`).join("") : '<div style="font-size:13px;color:var(--text-muted);">등록된 주관식 의견이 없습니다.</div>'}
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-title">Q9. 새로운 걷기 프로그램 아이디어 제안 (${q9List.length}건)</div>
+          <div class="subjective-list">
+            ${q9List.length ? q9List.map(t => `<div class="subjective-item">💡 ${escapeHtml(t)}</div>`).join("") : '<div style="font-size:13px;color:var(--text-muted);">등록된 아이디어 제안이 없습니다.</div>'}
+          </div>
+        </div>
+      `;
+
+      container.innerHTML = html;
+    }
+
+    function escapeHtml(str) {
+      return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    }
+
+    const ADMIN_EXPORT_PWD = "PR332!";
+
+    function openAdminPwdModal() {
+      const modal = document.getElementById("admin-pwd-modal");
+      const input = document.getElementById("admin-pwd-input");
+      const err = document.getElementById("admin-pwd-err");
+      input.value = "";
+      err.textContent = "";
+      modal.classList.add("open");
+      setTimeout(() => input.focus(), 50);
+    }
+
+    function closeAdminPwdModal() {
+      document.getElementById("admin-pwd-modal").classList.remove("open");
+    }
+
+    document.getElementById("admin-pwd-modal").addEventListener("click", function(e) {
+      if (e.target === this) closeAdminPwdModal();
+    });
+
+    document.getElementById("admin-pwd-form").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const inputVal = document.getElementById("admin-pwd-input").value;
+      const errEl = document.getElementById("admin-pwd-err");
+      if (inputVal !== ADMIN_EXPORT_PWD) {
+        errEl.textContent = "비밀번호가 일치하지 않습니다. 다시 확인해 주세요.";
+        document.getElementById("admin-pwd-input").select();
+        return;
+      }
+      closeAdminPwdModal();
+      await exportSurveyCSV();
+    });
+
+    async function exportSurveyCSV() {
+      const responses = await fetchAllResponses();
+      if (!responses.length) {
+        alert("다운로드할 설문 응답 데이터가 없습니다.");
+        return;
+      }
+      const headers = ["제출일시", "Q1_참여횟수", "Q2_좋았던점", "Q3_불편개선점", "Q4_에피소드소감", "Q5_통합앱기대점", "Q6_선호운영주기", "Q7_희망챌린지", "Q8_선호보상방식", "Q9_아이디어제안"];
+      const rows = responses.map(r => [
+        r.submittedAt || "",
+        r.q1 || "",
+        Array.isArray(r.q2) ? r.q2.join(" / ") : (r.q2 || ""),
+        Array.isArray(r.q3) ? r.q3.join(" / ") : (r.q3 || ""),
+        r.q4 || "",
+        r.q5 || "",
+        r.q6 || "",
+        Array.isArray(r.q7) ? r.q7.join(" / ") : (r.q7 || ""),
+        r.q8 || "",
+        r.q9 || ""
+      ].map(v => `"${String(v).replace(/"/g, '""')}"`).join(","));
+
+      const csvContent = "\uFEFF" + [headers.join(","), ...rows].join("\n");
+      const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `상상인_걷기프로젝트_개편설문_취합결과_${new Date().toISOString().slice(0,10)}.csv`;
+      a.click();
+      URL.revokeObjectURL(url);
     }
 
     window.addEventListener("DOMContentLoaded", () => {
