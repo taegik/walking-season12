@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>상상인 걷기 프로젝트 시즌12 종료 리포트 (2026.9.28~11.15, 7주간)</title>
+  <title>상상인 걷기 프로젝트 시즌12 종료 리포트</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -163,10 +163,12 @@
     }
 
     .kpi-value {
-      font-size: 32px;
+      font-size: clamp(23px, 2.5vw, 30px);
       font-weight: 900;
       color: var(--navy);
       letter-spacing: -0.8px;
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
     }
 
     .kpi-value.accent {
@@ -1839,13 +1841,44 @@
       const dailySteps = Math.round(avgSteps / 49); // 7주 = 49일
       const winRate = ((winnersCount / totalUsers) * 100).toFixed(1);
 
-      // Section 1 KPI 업데이트
-      document.getElementById("kpi-users").textContent = totalUsers.toLocaleString() + "명";
-      document.getElementById("kpi-steps").textContent = totalSteps.toLocaleString() + "보";
-      document.getElementById("kpi-avg").textContent = avgSteps.toLocaleString() + "보";
-      document.getElementById("kpi-daily").textContent = dailySteps.toLocaleString();
-      document.getElementById("kpi-winners").textContent = winnersCount.toLocaleString() + "명";
-      document.getElementById("kpi-rate").textContent = winRate;
+      // 숫자 롤링(카운트업) 애니메이션 함수 (1부터 목표값까지 부드럽게 감속하며 도달)
+      function animateCounter(el, startVal, endVal, duration, formatFn) {
+        const startTime = performance.now();
+        function easeOutExpo(t) {
+          return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+        }
+        function update(now) {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = easeOutExpo(progress);
+          const current = startVal + (endVal - startVal) * eased;
+          el.textContent = formatFn(current, progress === 1);
+          if (progress < 1) {
+            requestAnimationFrame(update);
+          }
+        }
+        requestAnimationFrame(update);
+      }
+
+      // Section 1 KPI 업데이트 (1부터 롤링 애니메이션 적용)
+      animateCounter(document.getElementById("kpi-users"), 1, totalUsers, 1400, (v, done) =>
+        (done ? totalUsers : Math.max(1, Math.floor(v))).toLocaleString() + "명"
+      );
+      animateCounter(document.getElementById("kpi-steps"), 1, totalSteps, 1800, (v, done) =>
+        (done ? totalSteps : Math.max(1, Math.floor(v))).toLocaleString() + "보"
+      );
+      animateCounter(document.getElementById("kpi-avg"), 1, avgSteps, 1600, (v, done) =>
+        (done ? avgSteps : Math.max(1, Math.floor(v))).toLocaleString() + "보"
+      );
+      animateCounter(document.getElementById("kpi-daily"), 1, dailySteps, 1600, (v, done) =>
+        (done ? dailySteps : Math.max(1, Math.floor(v))).toLocaleString()
+      );
+      animateCounter(document.getElementById("kpi-winners"), 1, winnersCount, 1500, (v, done) =>
+        (done ? winnersCount : Math.max(1, Math.floor(v))).toLocaleString() + "명"
+      );
+      animateCounter(document.getElementById("kpi-rate"), 1, parseFloat(winRate), 1500, (v, done) =>
+        done ? winRate : Math.max(1, v).toFixed(1)
+      );
 
       // Section 2 거리 및 지구 바퀴 환산 (보폭 0.7m = 0.0007km, 지구 둘레 40,075km)
       const totalKm = Math.round(totalSteps * 0.0007);
