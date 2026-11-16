@@ -2637,8 +2637,7 @@
           </div>
           <div id="survey-charts-container"></div>
           <div class="db-config-note">
-            <strong>💡 전사 취합 데이터베이스(DB) 연결 안내:</strong><br>
-            현재는 브라우저 내장 저장소(LocalStorage)에 실시간 저장되어 즉시 취합 결과를 확인 및 CSV 다운로드할 수 있습니다. 전 임직원 응답을 하나의 클라우드 DB로 자동 취합하려면 HTML 하단 스크립트의 <code>SURVEY_WEBHOOK_URL</code> 변수에 <strong>Google Apps Script 웹 앱 URL</strong>(또는 사내 API 엔드포인트)만 붙여넣으면 즉시 외부 DB와 양방향 동기화됩니다.
+            <strong>🔒 익명 응답 보호 안내:</strong> 모든 설문 응답은 무기명(익명)으로 안전하게 집계되며, 2027년 그룹 통합앱 기반 걷기 프로그램 기획 자료로만 활용됩니다.
           </div>
         </div>
       </div>
@@ -2704,6 +2703,22 @@
         <div class="admin-emp-list" id="admin-emp-list"></div>
 
         <div id="admin-editor-area" style="display: none;"></div>
+
+        <!-- 설문조사 클라우드 DB(Google Apps Script) 연동 설정 -->
+        <div style="margin-top: 22px; padding-top: 18px; border-top: 1.5px dashed var(--border);">
+          <div style="font-size: 15px; font-weight: 900; color: var(--navy); margin-bottom: 6px;">
+            ☁️ 설문조사 전사 클라우드 DB (Google 스프레드시트) 연동 설정
+          </div>
+          <p style="font-size: 12.5px; color: var(--text-muted); margin-bottom: 10px; line-height: 1.5;">
+            Google Apps Script 웹 앱 URL을 입력하고 <strong>[DB URL 저장]</strong> 후 하단의 <strong>[최신 HTML 파일 다운로드]</strong>로 배포하면, 전 임직원의 설문 응답이 하나의 Google 스프레드시트로 실시간 통합 집계됩니다.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <input type="url" class="admin-search-input" id="admin-webhook-input" placeholder="https://script.google.com/macros/s/.../exec" style="font-size: 13px;" />
+            <button type="button" class="admin-btn admin-btn-primary" onclick="saveAdminWebhookUrl()">DB URL 저장</button>
+            <button type="button" class="admin-btn admin-btn-outline" onclick="testAdminWebhookUrl()">연결 테스트</button>
+          </div>
+          <div id="admin-webhook-status" style="font-size: 12px; font-weight: 700; color: var(--primary-dark); margin-top: 6px;"></div>
+        </div>
       </div>
       <div class="admin-footer-bar">
         <div>
@@ -3075,7 +3090,13 @@
      * - 확장: 아래 SURVEY_WEBHOOK_URL에 Google Apps Script / Supabase / 사내 API URL 입력 시 중앙 DB로 자동 전송 및 조회
      */
     const SURVEY_WEBHOOK_URL = ""; // 예: "https://script.google.com/macros/s/XXXXX/exec"
+    const LOCAL_WEBHOOK_KEY = "sangsangin_walking_s12_webhook_url_v1";
     const LOCAL_SURVEY_KEY = "sangsangin_walking_s12_survey_v1";
+
+    function getActiveWebhookUrl() {
+      const saved = (localStorage.getItem(LOCAL_WEBHOOK_KEY) || "").trim();
+      return saved || (SURVEY_WEBHOOK_URL || "").trim();
+    }
 
     // 최대 선택 개수 제한 (Q2, Q7 최대 2개)
     document.querySelectorAll(".q-options[data-max]").forEach(group => {
@@ -3107,9 +3128,10 @@
     }
 
     async function fetchAllResponses() {
-      if (SURVEY_WEBHOOK_URL) {
+      const webhookUrl = getActiveWebhookUrl();
+      if (webhookUrl) {
         try {
-          const res = await fetch(SURVEY_WEBHOOK_URL);
+          const res = await fetch(webhookUrl);
           if (res.ok) {
             const data = await res.json();
             if (Array.isArray(data)) return data;
@@ -3164,12 +3186,13 @@
 
       saveLocalResponse(payload);
 
-      if (SURVEY_WEBHOOK_URL) {
+      const webhookUrl = getActiveWebhookUrl();
+      if (webhookUrl) {
         try {
-          await fetch(SURVEY_WEBHOOK_URL, {
+          await fetch(webhookUrl, {
             method: "POST",
             mode: "no-cors",
-            headers: { "Content-Type": "application/json" },
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
             body: JSON.stringify(payload)
           });
         } catch (err) {
@@ -3209,9 +3232,9 @@
       const responses = await fetchAllResponses();
       const total = responses.length;
       document.getElementById("survey-total-count").textContent = total.toLocaleString();
-      document.getElementById("survey-db-mode").textContent = SURVEY_WEBHOOK_URL
-        ? "(클라우드 DB 연동 중)"
-        : "(브라우저 로컬 DB 저장 모드)";
+      document.getElementById("survey-db-mode").textContent = getActiveWebhookUrl()
+        ? "(클라우드 DB 실시간 연동 중)"
+        : "(브라우저 로컬 저장 모드)";
 
       const container = document.getElementById("survey-charts-container");
       if (total === 0) {
@@ -3350,9 +3373,51 @@
      */
     let currentEditingIdx = null;
 
+    function saveAdminWebhookUrl() {
+      const val = document.getElementById("admin-webhook-input").value.trim();
+      localStorage.setItem(LOCAL_WEBHOOK_KEY, val);
+      const statusEl = document.getElementById("admin-webhook-status");
+      statusEl.textContent = val
+        ? "✅ 클라우드 DB URL이 저장되었습니다. 하단의 [정정 반영된 최신 HTML 파일 다운로드]로 배포 파일에 영구 반영하세요."
+        : "ℹ️ 클라우드 DB URL이 초기화되었습니다 (로컬 저장 모드).";
+      if (document.getElementById("survey-results-panel").style.display !== "none") {
+        renderSurveyDashboard();
+      }
+    }
+
+    async function testAdminWebhookUrl() {
+      const val = document.getElementById("admin-webhook-input").value.trim() || getActiveWebhookUrl();
+      const statusEl = document.getElementById("admin-webhook-status");
+      if (!val) {
+        statusEl.textContent = "⚠️ 먼저 Google Apps Script 웹 앱 URL을 입력해 주세요.";
+        return;
+      }
+      statusEl.textContent = "⏳ 클라우드 DB 연결을 확인하는 중입니다...";
+      try {
+        const res = await fetch(val);
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        const data = await res.json();
+        if (Array.isArray(data)) {
+          statusEl.textContent = `✅ 연결 성공! 현재 구글 시트에 누적된 설문 응답은 총 ${data.length}건입니다.`;
+        } else {
+          statusEl.textContent = "⚠️ 응답 형식은 확인되었으나 배열(JSON) 형식이 아닙니다. Apps Script 코드를 확인해 주세요.";
+        }
+      } catch (err) {
+        statusEl.textContent = "❌ 연결 실패: 배포 권한이 '모든 사용자(Anyone)'로 설정되어 있는지 확인해 주세요.";
+      }
+    }
+
     function openAdminManageModal() {
       const modal = document.getElementById("admin-manage-modal");
       modal.classList.add("open");
+      const whInput = document.getElementById("admin-webhook-input");
+      if (whInput) whInput.value = getActiveWebhookUrl();
+      const whStatus = document.getElementById("admin-webhook-status");
+      if (whStatus) {
+        whStatus.textContent = getActiveWebhookUrl()
+          ? "현재 상태: 클라우드 DB(Google 스프레드시트) 연동 설정됨"
+          : "현재 상태: 미연동 (로컬 저장 모드)";
+      }
       updateAdminModCount();
       const ovKeys = Object.keys(getStepOverrides());
       if (ovKeys.length > 0) {
@@ -3675,10 +3740,16 @@
       if (archiveTfootEl) archiveTfootEl.innerHTML = "";
 
       const docHtml = "<!DOCTYPE html>\n" + clonedDoc.outerHTML;
-      const replacedHtml = docHtml.replace(
-        /const rawEmployeesS12 = \[[\s\S]*?\];/,
-        `const rawEmployeesS12 = ${updatedJsonStr};`
-      );
+      const activeWh = JSON.stringify(getActiveWebhookUrl());
+      const replacedHtml = docHtml
+        .replace(
+          /const rawEmployeesS12 = \[[\s\S]*?\];/,
+          `const rawEmployeesS12 = ${updatedJsonStr};`
+        )
+        .replace(
+          /const SURVEY_WEBHOOK_URL = "[^"]*";/,
+          `const SURVEY_WEBHOOK_URL = ${activeWh};`
+        );
       const blob = new Blob([replacedHtml], { type: "text/html;charset=utf-8;" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
